@@ -9,8 +9,27 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List {
+                ForEach(0..<10) { _ in
+                    ToolRow(id: 1,
+                            title: "Notion",
+                            link: "https://notion.so",
+                            description: "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
+                            tags: [
+                                "organization",
+                                "planning",
+                                "collaboration",
+                                "writing",
+                                "calendar"
+                            ]
+                    )
+                }
+            }
+            .listStyle(GroupedListStyle())
+            .navigationTitle("VUTTR")
+        }
+
     }
 }
 
