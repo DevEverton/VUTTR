@@ -32,11 +32,10 @@ struct ToolRow: View {
 
         }
         .frame(maxWidth: .infinity)
-        .padding()
+        .padding(12)
         .background(Color("RowColor"))
-        .cornerRadius(10)
-        .shadow(radius: 10)
-
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
     }
     
     func getTags(from array: [String]) -> String {
