@@ -16,18 +16,30 @@ struct ToolRow: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(title)
-                .font(.system(size: 20, weight: .medium, design: .rounded))
-                .foregroundColor(Color.white)
+            HStack {
+                Text(title)
+                    .font(.system(size: 20, weight: .medium, design: .serif))
+                    .foregroundColor(Color.white)
+                Spacer()
+                Button(action: {}) {
+                    Image(systemName: "x.circle").font(.system(size: 18, weight: .regular))
+                        .foregroundColor(Color("red"))
+                }
+            }
 
             Text(description)
-                .font(.system(size: 16, weight: .regular, design: .rounded))
+                .font(.system(size: 16, weight: .regular, design: .serif))
                 .foregroundColor(Color.white)
 
             
-            Text(getTags(from: tags))
-                .font(.system(size: 12, weight: .bold, design: .rounded))
-                .foregroundColor(Color("TagColor"))
+            HStack {
+                Image(systemName: "tag").font(.system(size: 20, weight: .regular))
+                    .foregroundColor(Color("TagColor"))
+
+                Text(getTags(from: tags))
+                    .font(.system(size: 14, weight: .bold, design: .serif))
+                    .foregroundColor(Color("TagColor"))
+            }
 
 
         }

@@ -9,10 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
+        
+        VStack(alignment: .leading) {
+            Text("VUTTR")
+                .padding([.leading, .top])
+                .padding(.bottom)
+                .font(.system(size: 40, weight: .medium, design: .serif))
+            SearchBar(text: .constant(" "))
             ListView()
-                .padding(.top)
+                .padding(.top, 5)
         }
+        
 
 
     }
