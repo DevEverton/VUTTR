@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		503BFAC62603E43A00A79EC1 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503BFAC52603E43A00A79EC1 /* Tool.swift */; };
+		503BFACA2603E4CC00A79EC1 /* ToolList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503BFAC92603E4CC00A79EC1 /* ToolList.swift */; };
 		50D6EA5225F956BA00BE74DA /* VUTTRApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6EA5125F956BA00BE74DA /* VUTTRApp.swift */; };
 		50D6EA5425F956BA00BE74DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6EA5325F956BA00BE74DA /* ContentView.swift */; };
 		50D6EA5625F956BD00BE74DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50D6EA5525F956BD00BE74DA /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		503BFAC52603E43A00A79EC1 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		503BFAC92603E4CC00A79EC1 /* ToolList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolList.swift; sourceTree = "<group>"; };
 		50D6EA4E25F956BA00BE74DA /* VUTTR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VUTTR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D6EA5125F956BA00BE74DA /* VUTTRApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VUTTRApp.swift; sourceTree = "<group>"; };
 		50D6EA5325F956BA00BE74DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		503BFAC42603E41200A79EC1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				503BFAC52603E43A00A79EC1 /* Tool.swift */,
+				503BFAC92603E4CC00A79EC1 /* ToolList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		50D6EA4525F956BA00BE74DA = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +71,7 @@
 		50D6EA5025F956BA00BE74DA /* VUTTR */ = {
 			isa = PBXGroup;
 			children = (
+				503BFAC42603E41200A79EC1 /* Model */,
 				50D6EA6125F9571800BE74DA /* Views */,
 				50D6EA5125F956BA00BE74DA /* VUTTRApp.swift */,
 				50D6EA5325F956BA00BE74DA /* ContentView.swift */,
@@ -158,6 +172,8 @@
 				50D6EA6725F9745200BE74DA /* ListView.swift in Sources */,
 				50D6EA6325F9574100BE74DA /* ToolRow.swift in Sources */,
 				50D6EA6A25FA6C7000BE74DA /* SearchBar.swift in Sources */,
+				503BFACA2603E4CC00A79EC1 /* ToolList.swift in Sources */,
+				503BFAC62603E43A00A79EC1 /* Tool.swift in Sources */,
 				50D6EA5425F956BA00BE74DA /* ContentView.swift in Sources */,
 				50D6EA5225F956BA00BE74DA /* VUTTRApp.swift in Sources */,
 			);

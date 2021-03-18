@@ -8,23 +8,20 @@
 import SwiftUI
 
 struct ListView: View {
+    @ObservedObject var tools: ToolList
+    
     var body: some View {
         VStack {
             ScrollView(showsIndicators: false) {
                 Spacer()
                     .padding(.bottom, 12)
-                ForEach(0..<10) { _ in
-                    ToolRow(id: 1,
-                            title: "Notion",
-                            link: "https://notion.so",
-                            description: "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
-                            tags: [
-                                "organization",
-                                "planning",
-                                "collaboration",
-                                "writing",
-                                "calendar"
-                            ]
+                ForEach(tools.list) { tool in
+                    ToolRow(
+                            id: tool.id,
+                            title: tool.title,
+                            link: tool.link,
+                            description: tool.description,
+                            tags: tool.tags
                     )
                     .listRowBackground(Color("background"))
                     .padding([.top, .horizontal], 10)
@@ -43,6 +40,6 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView()
+        ListView(tools: .init())
     }
 }

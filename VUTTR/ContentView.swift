@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var tools: ToolList
+    @State var searchText = ""
+    
     var body: some View {
         
         VStack(alignment: .leading) {
@@ -15,8 +18,8 @@ struct ContentView: View {
                 .padding([.leading, .top])
                 .padding(.bottom)
                 .font(.system(size: 40, weight: .medium, design: .serif))
-            SearchBar(text: .constant(" "))
-            ListView()
+            SearchBar(text: $searchText)
+            ListView(tools: tools)
                 .padding(.top, 5)
         }
         
@@ -27,7 +30,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(tools: .init())
     }
 }
 

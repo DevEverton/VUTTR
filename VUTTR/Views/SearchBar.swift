@@ -25,12 +25,11 @@ struct SearchBar: View {
                 }
                 .animation(.spring())
                 .font(.system(size: 16, weight: .regular, design: .serif))
-
  
             if isEditing {
                 Button(action: {
-                    self.isEditing = false
                     self.text = ""
+                    self.isEditing = false
  
                 }) {
                     Image(systemName: "x.circle").font(.system(size: 26, weight: .regular))
@@ -40,11 +39,14 @@ struct SearchBar: View {
                 .padding(.trailing, 10)
                 .transition(.move(edge: .trailing))
                 .animation(.default)
+
+                
             }
 
         }
     }
 }
+
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {

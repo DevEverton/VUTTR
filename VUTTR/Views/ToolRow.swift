@@ -25,6 +25,7 @@ struct ToolRow: View {
                     Image(systemName: "x.circle").font(.system(size: 18, weight: .regular))
                         .foregroundColor(Color("red"))
                 }
+                .padding(.trailing, 12)
             }
 
             Text(description)
@@ -44,7 +45,7 @@ struct ToolRow: View {
 
         }
         .frame(maxWidth: .infinity)
-        .padding(12)
+        .padding([.leading, .vertical],12)
         .background(Color("RowColor"))
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
