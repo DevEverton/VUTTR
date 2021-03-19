@@ -24,7 +24,7 @@ struct ListView: View {
                             tags: tool.tags
                     )
                     .listRowBackground(Color("background"))
-                    .padding([.top, .horizontal], 10)
+                    .padding(.horizontal, 10)
 
                 }
                 
