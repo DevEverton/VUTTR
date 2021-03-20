@@ -10,17 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var tools: ToolList
     @State var searchText = ""
+    @State var isAddingTool = false
     
     var body: some View {
-        
-        //TODO: - Make add Button
-        
         ZStack {
             VStack(alignment: .leading) {
                 Text("VUTTR")
                     .padding([.leading, .top])
                     .padding(.bottom)
-                    .font(.system(size: 40, weight: .medium, design: .serif))
+                    .font(.system(size: 40, weight: .bold, design: .serif))
                 SearchBar(text: $searchText)
                     .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
                 ListView(tools: tools)
@@ -31,7 +29,7 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        
+                        isAddingTool.toggle()
                     }){
                         Image(systemName: "plus.circle.fill")
                             .font(.system(size: 55, weight: .regular))
@@ -42,6 +40,9 @@ struct ContentView: View {
                 .padding([.bottom, .trailing], 5)
             }
         }
+        .sheet(isPresented: $isAddingTool, content: {
+            AddToolView(toolName: "", toolLink: "", toolDescription: "", toolTags: "")
+        })
         
 
 

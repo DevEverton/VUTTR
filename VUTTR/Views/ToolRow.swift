@@ -72,5 +72,8 @@ struct ToolRow_Previews: PreviewProvider {
                     "calendar"
                 ]
         )
+        .previewLayout(.sizeThatFits)
+        .padding(10)
+
     }
 }

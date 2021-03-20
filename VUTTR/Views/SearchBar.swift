@@ -33,7 +33,7 @@ struct SearchBar: View {
                     hideKeyboard()
  
                 }) {
-                    Image(systemName: "x.circle").font(.system(size: 26, weight: .regular))
+                    Image(systemName: "x.circle.fill").font(.system(size: 26, weight: .regular))
                         .foregroundColor(Color("red"))
 
                 }
@@ -59,6 +59,8 @@ extension View {
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
         SearchBar(text: .constant(""))
+            .previewLayout(.sizeThatFits)
+            .padding(10)
             
     }
 }
