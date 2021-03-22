@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ContentView: View {
-    @ObservedObject var tools: ToolList
+    @StateObject var tools: Tools
     @State var searchText = ""
     @State var isAddingTool = false
     
@@ -19,11 +20,11 @@ struct ContentView: View {
                     .padding([.leading, .top])
                     .padding(.bottom)
                     .font(.system(size: 40, weight: .bold, design: .serif))
-                
                 SearchBar(text: $searchText)
 
                 ListView(tools: tools)
                     .padding(.top, 5)
+
             }
             
             VStack {
@@ -43,7 +44,7 @@ struct ContentView: View {
             }
         }
         .sheet(isPresented: $isAddingTool, content: {
-            AddToolView(toolName: "", toolLink: "", toolDescription: "", toolTags: "")
+            AddToolView(toolName: "", toolLink: "", toolDescription: "", toolTags: "", tools: tools)
         })
         
 

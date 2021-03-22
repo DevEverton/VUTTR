@@ -8,28 +8,31 @@
 import SwiftUI
 
 struct ListView: View {
-    @ObservedObject var tools: ToolList
-    
+    var tools: Tools
+
     var body: some View {
         VStack {
-            ScrollView(showsIndicators: false) {
-                Spacer()
-                    .padding(.bottom, 12)
-                ForEach(tools.list) { tool in
-                    ToolRow(
-                            id: tool.id,
-                            title: tool.title,
-                            link: tool.link,
-                            description: tool.description,
-                            tags: tool.tags
-                    )
-                    .listRowBackground(Color("background"))
-                    .padding(.horizontal, 10)
+            Group {
+                if tools.list.isEmpty {
+                    EmptyView()
+                } else {
+                    ScrollView(showsIndicators: false) {
+                        Spacer()
+                            .padding(.bottom, 12)
+                        ForEach(tools.list) { tool in
+                            ToolRow(
+                                    title: tool.title,
+                                    link: tool.link,
+                                    description: tool.description,
+                                    tags: tool.tags
+                            )
+                            .listRowBackground(Color("background"))
+                            .padding(.horizontal, 10)
 
+                        }
+                    }
                 }
-                
             }
-            .navigationTitle("VUTTR")
         }
         .background(Color("background"))
         .clipShape(RoundedRectangle(cornerRadius: 30))

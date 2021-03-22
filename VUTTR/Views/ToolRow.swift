@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ToolRow: View {
-    let id: Int
+//    let id: Int
     let title: String
     let link: String
     let description: String
@@ -71,7 +71,7 @@ struct ToolRow: View {
 
 struct ToolRow_Previews: PreviewProvider {
     static var previews: some View {
-        ToolRow(id: 1,
+        ToolRow(
                 title: "Notion",
                 link: "https://notion.so",
                 description: "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",

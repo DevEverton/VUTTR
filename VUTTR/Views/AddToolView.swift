@@ -14,7 +14,7 @@ struct AddToolView: View {
     @State var toolTags: String
     @Environment(\.presentationMode) var presentationMode
     
-    
+    var tools: Tools    
     
     var body: some View {
         VStack {
@@ -29,7 +29,6 @@ struct AddToolView: View {
                     self.toolName = ""
                     hideKeyboard()
                     presentationMode.wrappedValue.dismiss()
-
                     
                 }) {
                     Image(systemName: "x.circle.fill").font(.system(size: 26, weight: .regular))
@@ -64,7 +63,10 @@ struct AddToolView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    
+                    tools.addTool(title: toolName, link: toolLink, description: toolDescription, tags: [])
+
+                    presentationMode.wrappedValue.dismiss()
+
                 }){
                    Text("Add tool")
                     .font(.system(size: 18, weight: .semibold, design: .serif))
@@ -83,9 +85,8 @@ struct AddToolView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("background"))
         .edgesIgnoringSafeArea(.all)
-        
-        
     }
+    
 }
 
 struct TextEntry: View {
@@ -112,7 +113,7 @@ struct TextEntry: View {
 
 struct AddToolView_Previews: PreviewProvider {
     static var previews: some View {
-        AddToolView(toolName: "", toolLink: "", toolDescription: "", toolTags: "")
+        AddToolView(toolName: "", toolLink: "", toolDescription: "", toolTags: "", tools: .init())
             .previewLayout(.sizeThatFits)
     }
 }

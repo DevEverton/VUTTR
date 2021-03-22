@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct Tool: Identifiable {
-    let id: Int
+struct Tool: Identifiable, Codable {
+    var id = UUID()
     let title: String
     let link: String
     let description: String
     let tags: [String]
 }
+
