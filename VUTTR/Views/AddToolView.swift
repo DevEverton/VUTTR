@@ -22,6 +22,8 @@ struct AddToolView: View {
                 Text("Add New Tool")
                     .foregroundColor(.white)
                     .font(.system(size: 30, weight: .bold, design: .serif))
+
+
                 Spacer()
                 Button(action: {
                     self.toolName = ""
@@ -34,6 +36,7 @@ struct AddToolView: View {
                         .foregroundColor(Color("red"))
                     
                 }
+                .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
                 
             }
             .padding(.horizontal)
@@ -63,12 +66,17 @@ struct AddToolView: View {
                 Button(action: {
                     
                 }){
-                    Image(systemName: "plus.circle.fill")
-                        .font(.system(size: 55, weight: .regular))
-                        .foregroundColor(Color("yellow"))
-                        .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
+                   Text("Add tool")
+                    .font(.system(size: 18, weight: .semibold, design: .serif))
+                    .foregroundColor(.white)
+                    .frame(width: 110, height: 30, alignment: .center)
+                    .background(Color("green"))
+                    .cornerRadius(8)
+                    
                 }
-                .padding([.trailing, .bottom])
+                .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
+                .padding(.trailing)
+                .padding(.bottom, 50)
             }
             
         }

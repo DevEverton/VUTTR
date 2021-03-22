@@ -13,6 +13,7 @@ struct ToolRow: View {
     let link: String
     let description: String
     let tags: [String]
+    @State private var showingAlert = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -21,11 +22,21 @@ struct ToolRow: View {
                     .font(.system(size: 20, weight: .medium, design: .serif))
                     .foregroundColor(Color.white)
                 Spacer()
-                Button(action: {}) {
+                Button(action: {
+                    showingAlert.toggle()
+                }) {
                     Image(systemName: "x.circle").font(.system(size: 18, weight: .regular))
                         .foregroundColor(Color("red"))
                 }
                 .padding(.trailing, 12)
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Remove tool"), message: Text("Are you sure do you want to remove \(title)"),
+                          primaryButton: .cancel(),
+                          secondaryButton: .destructive(Text("Yes, remove")) {
+                            print("Deleting...")
+                          })
+                }
+                
             }
 
             Text(description)

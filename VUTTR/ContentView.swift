@@ -19,11 +19,13 @@ struct ContentView: View {
                     .padding([.leading, .top])
                     .padding(.bottom)
                     .font(.system(size: 40, weight: .bold, design: .serif))
+                
                 SearchBar(text: $searchText)
-                    .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
+
                 ListView(tools: tools)
                     .padding(.top, 5)
             }
+            
             VStack {
                 Spacer()
                 HStack {
