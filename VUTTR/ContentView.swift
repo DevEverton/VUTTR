@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-    @StateObject var tools: Tools
+    @ObservedObject var tools: Tools
     @State var searchText = ""
     @State var isAddingTool = false
     

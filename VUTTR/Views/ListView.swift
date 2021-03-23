@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListView: View {
-    var tools: Tools
+    @ObservedObject var tools: Tools
 
     var body: some View {
         VStack {
