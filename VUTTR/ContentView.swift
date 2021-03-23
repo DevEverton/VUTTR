@@ -40,15 +40,13 @@ struct ContentView: View {
                             .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
                     }
                 }
-                .padding([.bottom, .trailing], 5)
+                .padding(.trailing, 5)
             }
         }
         .sheet(isPresented: $isAddingTool, content: {
             AddToolView(toolName: "", toolLink: "", toolDescription: "", toolTags: "", tools: tools)
         })
         
-
-
     }
 }
 

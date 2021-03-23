@@ -72,19 +72,25 @@ struct AddToolView: View {
                     .font(.system(size: 18, weight: .semibold, design: .serif))
                     .foregroundColor(.white)
                     .frame(width: 110, height: 30, alignment: .center)
-                    .background(Color("green"))
+                    .background(hasFieldsToFill() ? Color("gray") : Color("green"))
                     .cornerRadius(8)
                     
                 }
                 .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
                 .padding(.trailing)
                 .padding(.bottom, 50)
+                .disabled(hasFieldsToFill())
+                
             }
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("background"))
         .edgesIgnoringSafeArea(.all)
+    }
+    
+    private func hasFieldsToFill() -> Bool {
+        toolName.isEmpty || toolLink.isEmpty || toolDescription.isEmpty || toolTags.isEmpty
     }
     
 }

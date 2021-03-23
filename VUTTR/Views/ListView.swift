@@ -18,7 +18,6 @@ struct ListView: View {
                 } else {
                     ScrollView(showsIndicators: false) {
                         Spacer()
-                            .padding(.bottom, 12)
                         ForEach(tools.list) { tool in
                             ToolRow(
                                     title: tool.title,
@@ -28,8 +27,11 @@ struct ListView: View {
                             )
                             .listRowBackground(Color("background"))
                             .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
 
                         }
+                        Spacer()
+                            .padding(.bottom, 10)
                     }
                 }
             }

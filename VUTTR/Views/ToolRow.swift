@@ -42,6 +42,7 @@ struct ToolRow: View {
             Text(description)
                 .font(.system(size: 16, weight: .regular, design: .serif))
                 .foregroundColor(Color.white)
+                .lineLimit(2)
 
             
             HStack {

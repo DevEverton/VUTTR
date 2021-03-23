@@ -57,8 +57,6 @@ class Tools: ObservableObject {
     {
         didSet {
             saveJSONToolsList()
-            self.objectWillChange.send()
-            print(list)
         }
     }
 
@@ -69,9 +67,9 @@ class Tools: ObservableObject {
     private func loadJSONToolsList() {
         guard FileManager.default.fileExists(atPath: toolsJSONURL.path) else { return }
         
-        let filePath = FileManager.documentsDirectoryURL.path
-        print(filePath)
-        
+//        let filePath = FileManager.documentsDirectoryURL.path
+//        print(filePath)
+//
         let decoder = JSONDecoder()
         
         do {
@@ -100,14 +98,6 @@ class Tools: ObservableObject {
 
     }
     
-//    func get(updatedList: [Tool]) {
-//      DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//        print("Update")
-//        self.list = updatedList
-//      }
-//    }
-//
-//
 }
 
 public extension FileManager {
