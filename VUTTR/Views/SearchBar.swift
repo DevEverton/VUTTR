@@ -16,7 +16,7 @@ struct SearchBar: View {
  
             TextField("only tags", text: $text)
                 .padding(8)
-                .background(Color("TagColor"))
+                .background(Color("gray"))
                 .foregroundColor(Color.white)
                 .cornerRadius(20)
                 .padding(.horizontal, 10)

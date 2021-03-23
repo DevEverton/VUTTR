@@ -14,6 +14,8 @@ struct AddToolView: View {
     @State var toolTags: String
     @Environment(\.presentationMode) var presentationMode
     
+    @State var messageOffset: CGFloat = -200
+        
     var tools: Tools    
     
     var body: some View {
@@ -61,10 +63,16 @@ struct AddToolView: View {
             TextEntry(placeholder: "tags", title: "Tags", text: $toolTags)
             Spacer()
             HStack {
+                Text("*All fields must be filled")
+                    .font(.system(size: 18, weight: .regular, design: .rounded))
+                    .padding(.leading)
+                    .foregroundColor(Color("red"))
+                    .offset(x: hasFieldsToFill() ? messageOffset : -200)
+                    .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1))
+                    
                 Spacer()
                 Button(action: {
                     tools.addTool(title: toolName, link: toolLink, description: toolDescription, tags: [])
-
                     presentationMode.wrappedValue.dismiss()
 
                 }){
@@ -78,10 +86,15 @@ struct AddToolView: View {
                 }
                 .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
                 .padding(.trailing)
-                .padding(.bottom, 50)
                 .disabled(hasFieldsToFill())
+                .onTapGesture {
+                    messageOffset = hasFieldsToFill() ? 0 : -200
+                }
+
                 
             }
+            .padding(.bottom, 50)
+
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -91,6 +104,7 @@ struct AddToolView: View {
     
     private func hasFieldsToFill() -> Bool {
         toolName.isEmpty || toolLink.isEmpty || toolDescription.isEmpty || toolTags.isEmpty
+        
     }
     
 }

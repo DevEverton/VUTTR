@@ -21,6 +21,7 @@ struct ContentView: View {
                     .padding(.bottom)
                     .font(.system(size: 40, weight: .bold, design: .serif))
                 SearchBar(text: $searchText)
+                    .padding(.top)
 
                 ListView(tools: tools)
                     .padding(.top, 5)
