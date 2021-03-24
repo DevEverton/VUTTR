@@ -72,7 +72,7 @@ struct AddToolView: View {
                     
                 Spacer()
                 Button(action: {
-                    tools.addTool(title: toolName, link: toolLink, description: toolDescription, tags: [])
+                    tools.addTool(title: toolName, link: toolLink, description: toolDescription, tags: processTags(from: toolTags))
                     presentationMode.wrappedValue.dismiss()
 
                 }){
@@ -100,11 +100,16 @@ struct AddToolView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("background"))
         .edgesIgnoringSafeArea(.all)
+
     }
     
     private func hasFieldsToFill() -> Bool {
         toolName.isEmpty || toolLink.isEmpty || toolDescription.isEmpty || toolTags.isEmpty
         
+    }
+    
+    private func processTags(from tags: String) -> [String] {
+        tags.split(separator: " ").map { String($0) }
     }
     
 }

@@ -63,7 +63,7 @@ struct ToolRow: View {
         .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
     }
     
-    func getTags(from array: [String]) -> String {
+    private func getTags(from array: [String]) -> String {
           array
             .map {"#" + $0 + " "}
             .reduce("", {$0 + $1})
