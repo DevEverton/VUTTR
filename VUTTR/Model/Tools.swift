@@ -69,7 +69,7 @@ class Tools: ObservableObject {
         
 //        let filePath = FileManager.documentsDirectoryURL.path
 //        print(filePath)
-//
+
         let decoder = JSONDecoder()
         
         do {
@@ -95,7 +95,23 @@ class Tools: ObservableObject {
     func addTool(title: String, link: String, description: String, tags: [String]) {
         let tool = Tool(title: title, link: link, description: description, tags: tags)
         list.append(tool)
+        
 
+    }
+    func getIndexOfTool(named title: String) -> Int {
+        var toolIndex: Int
+        
+        for (index, element) in list.enumerated() {
+            if element.title == title {
+                toolIndex = index
+                return toolIndex
+            }
+        }
+        return 0
+    }
+    
+    func deleteTool(at index: Int) {
+        list.remove(at: index)
     }
     
 }

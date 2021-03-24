@@ -25,9 +25,9 @@ struct ContentView: View {
 
                 ListView(tools: tools)
                     .padding(.top, 5)
+                    .animation(.easeInOut(duration: 0.2))
 
             }
-            
             VStack {
                 Spacer()
                 HStack {
@@ -47,8 +47,9 @@ struct ContentView: View {
         .sheet(isPresented: $isAddingTool, content: {
             AddToolView(toolName: "", toolLink: "", toolDescription: "", toolTags: "", tools: tools)
         })
-        
+
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

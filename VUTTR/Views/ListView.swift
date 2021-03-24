@@ -23,13 +23,15 @@ struct ListView: View {
                                     title: tool.title,
                                     link: tool.link,
                                     description: tool.description,
-                                    tags: tool.tags
+                                    tags: tool.tags,
+                                    tools: tools
                             )
                             .listRowBackground(Color("background"))
                             .padding(.horizontal, 10)
                             .padding(.vertical, 6)
 
                         }
+                        
                         Spacer()
                             .padding(.bottom, 10)
                     }

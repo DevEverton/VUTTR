@@ -14,6 +14,7 @@ struct ToolRow: View {
     let description: String
     let tags: [String]
     @State private var showingAlert = false
+    @ObservedObject var tools: Tools
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -33,7 +34,8 @@ struct ToolRow: View {
                     Alert(title: Text("Remove tool"), message: Text("Are you sure do you want to remove \(title)"),
                           primaryButton: .cancel(),
                           secondaryButton: .destructive(Text("Yes, remove")) {
-                            print("Deleting...")
+                            let index = tools.getIndexOfTool(named: title)
+                            tools.deleteTool(at: index)
                           })
                 }
                 
@@ -82,7 +84,7 @@ struct ToolRow_Previews: PreviewProvider {
                     "collaboration",
                     "writing",
                     "calendar"
-                ]
+                ], tools: .init()
         )
         .previewLayout(.sizeThatFits)
         .padding(10)
