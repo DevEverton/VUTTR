@@ -13,7 +13,12 @@ struct ToolRow: View {
     let link: String
     let description: String
     let tags: [String]
-    @State private var showingAlert = false
+    
+    @State var isShowingAlert = false
+    
+    @Binding var isShowingWebView: Bool
+    @Binding var linkURL: URL
+    
     @ObservedObject var tools: Tools
     
     var body: some View {
@@ -23,21 +28,41 @@ struct ToolRow: View {
                     .font(.system(size: 20, weight: .medium, design: .serif))
                     .foregroundColor(Color.white)
                 Spacer()
-                Button(action: {
-                    showingAlert.toggle()
-                }) {
-                    Image(systemName: "x.circle").font(.system(size: 18, weight: .regular))
-                        .foregroundColor(Color("red"))
+                HStack(spacing: 10.0) {
+                    //MARK: - Link button
+                    
+                    Button(action: {
+                        linkURL = URL(string: link)!
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            isShowingWebView.toggle()
+
+                        }
+                        
+                    }) {
+                        Image(systemName: "link").font(.system(size: 20, weight: .regular))
+                            .font(.system(size: 20, weight: .semibold))
+                            .foregroundColor(Color.blue)
+                    }
+                    
+                    //MARK: - Delete button
+                    Button(action: {
+                        isShowingAlert.toggle()
+                    }) {
+                        Image(systemName: "x.circle")
+                            .font(.system(size: 20, weight: .regular))
+                            .foregroundColor(Color("red"))
+                    }
+                    .alert(isPresented: $isShowingAlert) {
+                        Alert(title: Text("Remove tool"), message: Text("Are you sure do you want to remove \(title)?"),
+                              primaryButton: .cancel(),
+                              secondaryButton: .destructive(Text("Yes, remove")) {
+                                let index = tools.getIndexOfTool(named: title)
+                                tools.deleteTool(at: index)
+                              })
+                    }
+ 
                 }
                 .padding(.trailing, 12)
-                .alert(isPresented: $showingAlert) {
-                    Alert(title: Text("Remove tool"), message: Text("Are you sure do you want to remove \(title)"),
-                          primaryButton: .cancel(),
-                          secondaryButton: .destructive(Text("Yes, remove")) {
-                            let index = tools.getIndexOfTool(named: title)
-                            tools.deleteTool(at: index)
-                          })
-                }
                 
             }
 
@@ -63,7 +88,9 @@ struct ToolRow: View {
         .background(Color("RowColor"))
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
+
     }
+    
     
     private func getTags(from array: [String]) -> String {
           array
@@ -84,7 +111,7 @@ struct ToolRow_Previews: PreviewProvider {
                     "collaboration",
                     "writing",
                     "calendar"
-                ], tools: .init()
+                ], isShowingWebView: .constant(false), linkURL: .constant(URL(string: "")!), tools: .init()
         )
         .previewLayout(.sizeThatFits)
         .padding(10)

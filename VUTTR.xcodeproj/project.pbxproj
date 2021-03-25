@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		503BFAC62603E43A00A79EC1 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503BFAC52603E43A00A79EC1 /* Tool.swift */; };
 		503BFACA2603E4CC00A79EC1 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503BFAC92603E4CC00A79EC1 /* Tools.swift */; };
+		5088130C260D2092005140C4 /* ToolWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088130B260D2092005140C4 /* ToolWebView.swift */; };
 		50BBC469260CBEB5006A42FF /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBC468260CBEB5006A42FF /* EmptyListView.swift */; };
+		50BBC46D260CD4BB006A42FF /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBC46C260CD4BB006A42FF /* WebView.swift */; };
 		50C56E3A26057C6F00D0A3DC /* AddToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C56E3926057C6F00D0A3DC /* AddToolView.swift */; };
 		50D6EA5225F956BA00BE74DA /* VUTTRApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6EA5125F956BA00BE74DA /* VUTTRApp.swift */; };
 		50D6EA5425F956BA00BE74DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6EA5325F956BA00BE74DA /* ContentView.swift */; };
@@ -23,7 +25,9 @@
 /* Begin PBXFileReference section */
 		503BFAC52603E43A00A79EC1 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		503BFAC92603E4CC00A79EC1 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		5088130B260D2092005140C4 /* ToolWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolWebView.swift; sourceTree = "<group>"; };
 		50BBC468260CBEB5006A42FF /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		50BBC46C260CD4BB006A42FF /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		50C56E3926057C6F00D0A3DC /* AddToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToolView.swift; sourceTree = "<group>"; };
 		50D6EA4E25F956BA00BE74DA /* VUTTR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VUTTR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D6EA5125F956BA00BE74DA /* VUTTRApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VUTTRApp.swift; sourceTree = "<group>"; };
@@ -56,6 +60,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		50BBC46B260CD4AA006A42FF /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				50BBC46C260CD4BB006A42FF /* WebView.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		50D6EA4525F956BA00BE74DA = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +87,7 @@
 		50D6EA5025F956BA00BE74DA /* VUTTR */ = {
 			isa = PBXGroup;
 			children = (
+				50BBC46B260CD4AA006A42FF /* Util */,
 				503BFAC42603E41200A79EC1 /* Model */,
 				50D6EA6125F9571800BE74DA /* Views */,
 				50D6EA5125F956BA00BE74DA /* VUTTRApp.swift */,
@@ -102,6 +115,7 @@
 				50C56E3926057C6F00D0A3DC /* AddToolView.swift */,
 				50D6EA6925FA6C7000BE74DA /* SearchBar.swift */,
 				50BBC468260CBEB5006A42FF /* EmptyListView.swift */,
+				5088130B260D2092005140C4 /* ToolWebView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,11 +190,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				50D6EA6725F9745200BE74DA /* ListView.swift in Sources */,
+				50BBC46D260CD4BB006A42FF /* WebView.swift in Sources */,
 				50D6EA6325F9574100BE74DA /* ToolRow.swift in Sources */,
 				50D6EA6A25FA6C7000BE74DA /* SearchBar.swift in Sources */,
 				503BFACA2603E4CC00A79EC1 /* Tools.swift in Sources */,
 				503BFAC62603E43A00A79EC1 /* Tool.swift in Sources */,
 				50D6EA5425F956BA00BE74DA /* ContentView.swift in Sources */,
+				5088130C260D2092005140C4 /* ToolWebView.swift in Sources */,
 				50C56E3A26057C6F00D0A3DC /* AddToolView.swift in Sources */,
 				50D6EA5225F956BA00BE74DA /* VUTTRApp.swift in Sources */,
 				50BBC469260CBEB5006A42FF /* EmptyListView.swift in Sources */,
