@@ -15,6 +15,8 @@ struct ContentView: View {
     
     @State var isShowingWebView: Bool = false
     @State var linkURL = URL(string: "https://www.youtube.com")!
+    @State var _title = "Tool"
+
     
     var body: some View {
         ZStack {
@@ -27,7 +29,7 @@ struct ContentView: View {
                 SearchBar(text: $searchText)
                     .padding(.top)
 
-                ListView(tools: tools, isShowingWebView: $isShowingWebView, linkURL: $linkURL)
+                ListView(tools: tools, isShowingWebView: $isShowingWebView, linkURL: $linkURL, _title: $_title)
                     .padding(.top, 5)
                     .animation(.easeInOut(duration: 0.2))
 
@@ -53,7 +55,7 @@ struct ContentView: View {
 //        })
 //
         .fullScreenCover(isPresented: $isShowingWebView) {
-            ToolWebView(title: "title", url: $linkURL)
+            ToolWebView(title: $_title, url: $linkURL)
         }
 
     }

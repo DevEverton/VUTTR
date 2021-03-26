@@ -12,7 +12,8 @@ struct ListView: View {
     
     @Binding var isShowingWebView: Bool
     @Binding var linkURL: URL
-    
+    @Binding var _title: String
+
 
     var body: some View {
         VStack {
@@ -23,10 +24,10 @@ struct ListView: View {
                     ScrollView(showsIndicators: false) {
                         Spacer()
                         ForEach(tools.list) { tool in
-                            ToolRow(title: tool.title, link: tool.link, description: tool.description, tags: tool.tags, isShowingWebView: $isShowingWebView, linkURL: $linkURL, tools: tools)
-                            .listRowBackground(Color("background"))
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 6)
+                            ToolRow(title: tool.title, link: tool.link, description: tool.description, tags: tool.tags, isShowingWebView: $isShowingWebView, linkURL: $linkURL, _title: $_title, tools: tools)
+                                .listRowBackground(Color("background"))
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 6)
 
                         }
                         
@@ -45,6 +46,6 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(tools: .init(), isShowingWebView: .constant(false), linkURL: .constant(URL(string: "")!))
+        ListView(tools: .init(), isShowingWebView: .constant(false), linkURL: .constant(URL(string: "")!), _title: .constant(""))
     }
 }

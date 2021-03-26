@@ -18,6 +18,7 @@ struct ToolRow: View {
     
     @Binding var isShowingWebView: Bool
     @Binding var linkURL: URL
+    @Binding var _title: String
     
     @ObservedObject var tools: Tools
     
@@ -33,11 +34,13 @@ struct ToolRow: View {
                     
                     Button(action: {
                         linkURL = URL(string: link)!
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            isShowingWebView.toggle()
+                        _title = title
+                        isShowingWebView.toggle()
 
-                        }
                         
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//
+//                        }
                     }) {
                         Image(systemName: "link").font(.system(size: 20, weight: .regular))
                             .font(.system(size: 20, weight: .semibold))
@@ -111,7 +114,7 @@ struct ToolRow_Previews: PreviewProvider {
                     "collaboration",
                     "writing",
                     "calendar"
-                ], isShowingWebView: .constant(false), linkURL: .constant(URL(string: "")!), tools: .init()
+                ], isShowingWebView: .constant(false), linkURL: .constant(URL(string: "")!), _title: .constant(""), tools: .init()
         )
         .previewLayout(.sizeThatFits)
         .padding(10)

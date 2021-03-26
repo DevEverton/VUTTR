@@ -20,10 +20,7 @@ struct WebView: UIViewRepresentable {
         let config = WKWebViewConfiguration()
         config.defaultWebpagePreferences = prefs
         
-        return WKWebView(frame: .zero, configuration: config)
-        
-        
-        
+        return WKWebView(frame: .zero, configuration: config)    
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
