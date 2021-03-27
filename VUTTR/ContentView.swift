@@ -20,6 +20,11 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            EmptyView()
+                .fullScreenCover(isPresented: $isShowingWebView) {
+                    ToolWebView(title: $_title, url: $linkURL)
+                }
+            
             VStack(alignment: .leading) {
                 Text("VUTTR")
                     .padding([.leading, .top])
@@ -39,24 +44,22 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-//                        isAddingTool.toggle()
+                        isAddingTool.toggle()
                     }){
                         Image(systemName: "plus.circle.fill")
                             .font(.system(size: 55, weight: .regular))
-                            .foregroundColor(Color("yellow"))
+                            .foregroundColor(Color("green"))
                             .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
                     }
                 }
                 .padding(.trailing, 5)
             }
+            .sheet(isPresented: $isAddingTool, content: {
+                AddToolView(toolName: "", toolLink: "", toolDescription: "", toolTags: "", tools: tools)
+            })
         }
-//        .sheet(isPresented: $isAddingTool, content: {
-//            AddToolView(toolName: "", toolLink: "", toolDescription: "", toolTags: "", tools: tools)
-//        })
-//
-        .fullScreenCover(isPresented: $isShowingWebView) {
-            ToolWebView(title: $_title, url: $linkURL)
-        }
+
+
 
     }
     
