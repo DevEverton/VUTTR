@@ -14,7 +14,7 @@ struct ContentView: View {
     @State var isAddingTool = false
     
     @State var isShowingWebView: Bool = false
-    @State var linkURL = URL(string: "https://www.youtube.com")!
+    @State var linkURL = URL(string: "https://www.google.com")!
     @State var _title = "Tool"
 
     
@@ -55,12 +55,9 @@ struct ContentView: View {
                 .padding(.trailing, 5)
             }
             .sheet(isPresented: $isAddingTool, content: {
-                AddToolView(toolName: "", toolLink: "", toolDescription: "", toolTags: "", tools: tools)
+                AddToolView(title: "Add new tool", buttonLabel: "Add tool", tools: tools)
             })
         }
-
-
-
     }
     
 }

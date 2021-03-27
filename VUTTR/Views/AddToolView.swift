@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct AddToolView: View {
-    @State var toolName: String
-    @State var toolLink: String
-    @State var toolDescription: String
-    @State var toolTags: String
+    @State var toolName: String = ""
+    @State var toolLink: String = ""
+    @State var toolDescription: String = ""
+    @State var toolTags: String = ""
     @Environment(\.presentationMode) var presentationMode
     
     @State var messageOffset: CGFloat = -200
-        
+      
+    var title: String
+    var buttonLabel: String
     var tools: Tools    
     
     var body: some View {
         VStack {
             HStack {
-                Text("Add New Tool")
+                Text(title)
                     .foregroundColor(.white)
                     .font(.system(size: 30, weight: .bold, design: .serif))
 
@@ -72,11 +74,17 @@ struct AddToolView: View {
                     
                 Spacer()
                 Button(action: {
-                    tools.addTool(title: toolName, link: toolLink, description: toolDescription, tags: processTags(from: toolTags))
+                    if buttonLabel == "Add tool" {
+                        tools.addTool(title: toolName, link: toolLink, description: toolDescription, tags: processTags(from: toolTags))
+                    } else {
+                        //TODO: - Call edit tool method
+                        tools.editTool(named: toolName)
+                    }
+                    
                     presentationMode.wrappedValue.dismiss()
 
                 }){
-                   Text("Add tool")
+                   Text(buttonLabel)
                     .font(.system(size: 18, weight: .semibold, design: .serif))
                     .foregroundColor(.white)
                     .frame(width: 110, height: 30, alignment: .center)
@@ -138,7 +146,7 @@ struct TextEntry: View {
 
 struct AddToolView_Previews: PreviewProvider {
     static var previews: some View {
-        AddToolView(toolName: "", toolLink: "", toolDescription: "", toolTags: "", tools: .init())
+        AddToolView(title: "Add new tool", buttonLabel: "Add tool", tools: .init())
             .previewLayout(.sizeThatFits)
     }
 }

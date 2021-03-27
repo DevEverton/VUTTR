@@ -98,7 +98,9 @@ class Tools: ObservableObject {
         
 
     }
+    
     func getIndexOfTool(named title: String) -> Int {
+        
         var toolIndex: Int
         
         for (index, element) in list.enumerated() {
@@ -112,6 +114,13 @@ class Tools: ObservableObject {
     
     func deleteTool(at index: Int) {
         list.remove(at: index)
+    }
+    
+    
+    //TODO: - Implement edit logic
+    func editTool(named title: String) {
+        let index = getIndexOfTool(named: title)
+        print(list[index].title)
     }
     
 }

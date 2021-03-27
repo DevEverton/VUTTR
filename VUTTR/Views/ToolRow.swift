@@ -15,6 +15,7 @@ struct ToolRow: View {
     let tags: [String]
     
     @State var isShowingAlert = false
+    @State var isEditing = false
     
     @Binding var isShowingWebView: Bool
     @Binding var linkURL: URL
@@ -72,6 +73,7 @@ struct ToolRow: View {
             Text(description)
                 .font(.system(size: 16, weight: .regular, design: .serif))
                 .foregroundColor(Color.white)
+                .frame(height: 60)
                 .lineLimit(2)
 
             
@@ -91,13 +93,25 @@ struct ToolRow: View {
         .background(Color("RowColor"))
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
+        .onTapGesture {
+            isEditing.toggle()
+        }
+        .sheet(isPresented: $isEditing) {
+                AddToolView(toolName: title, toolLink: link, toolDescription: description, toolTags: editTags(from: tags), title: "Edit tool", buttonLabel: "Update", tools: tools)
+        }
 
     }
     
     
     private func getTags(from array: [String]) -> String {
-          array
+        array
             .map {"#" + $0 + " "}
+            .reduce("", {$0 + $1})
+    }
+    
+    private func editTags(from array: [String]) -> String {
+        array
+            .map {$0 + " "}
             .reduce("", {$0 + $1})
     }
 }
@@ -105,17 +119,18 @@ struct ToolRow: View {
 struct ToolRow_Previews: PreviewProvider {
     static var previews: some View {
         ToolRow(
-                title: "Notion",
-                link: "https://notion.so",
-                description: "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
-                tags: [
-                    "organization",
-                    "planning",
-                    "collaboration",
-                    "writing",
-                    "calendar"
-                ], isShowingWebView: .constant(false), linkURL: .constant(URL(string: "")!), _title: .constant(""), tools: .init()
+            title: "Notion",
+            link: "https://notion.so",
+            description: "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
+            tags: [
+                "organization",
+                "planning",
+                "collaboration",
+                "writing",
+                "calendar"
+            ], isShowingAlert: false, isShowingWebView: .constant(false), linkURL: .constant(URL(string: "")!), _title: .constant(""), tools: .init()
         )
+        
         .previewLayout(.sizeThatFits)
         .padding(10)
 
