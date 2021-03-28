@@ -60,7 +60,7 @@ struct ToolRow: View {
                         Alert(title: Text("Remove tool"), message: Text("Are you sure do you want to remove \(title)?"),
                               primaryButton: .cancel(),
                               secondaryButton: .destructive(Text("Yes, remove")) {
-                                let index = tools.getIndexOfTool(named: title)
+                                let index = tools.getIndexOf(title: title)
                                 tools.deleteTool(at: index)
                               })
                     }

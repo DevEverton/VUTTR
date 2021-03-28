@@ -9,9 +9,9 @@ import Foundation
 
 struct Tool: Identifiable, Codable {
     var id = UUID()
-    let title: String
-    let link: String
-    let description: String
-    let tags: [String]
+    var title: String
+    var link: String
+    var description: String
+    var tags: [String]
 }
 

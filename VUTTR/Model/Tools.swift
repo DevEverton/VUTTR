@@ -99,7 +99,7 @@ class Tools: ObservableObject {
 
     }
     
-    func getIndexOfTool(named title: String) -> Int {
+    func getIndexOf(title: String) -> Int {
         
         var toolIndex: Int
         
@@ -117,10 +117,11 @@ class Tools: ObservableObject {
     }
     
     
-    //TODO: - Implement edit logic
-    func editTool(named title: String) {
-        let index = getIndexOfTool(named: title)
-        print(list[index].title)
+    func edit(withIndex index: Int, name: String, link: String, description: String, tags: [String] ) {
+        list[index].title = name
+        list[index].link = link
+        list[index].description = description
+        list[index].tags = tags
     }
     
 }

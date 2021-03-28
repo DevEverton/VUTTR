@@ -15,7 +15,9 @@ struct AddToolView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State var messageOffset: CGFloat = -200
-      
+    @State var isEditing = false
+    @State var index = 0
+    
     var title: String
     var buttonLabel: String
     var tools: Tools    
@@ -74,11 +76,11 @@ struct AddToolView: View {
                     
                 Spacer()
                 Button(action: {
-                    if buttonLabel == "Add tool" {
-                        tools.addTool(title: toolName, link: toolLink, description: toolDescription, tags: processTags(from: toolTags))
+                    if isEditing {
+                        tools.edit(withIndex: index, name: toolName, link: toolLink, description: toolDescription, tags: processTags(from: toolTags))
+
                     } else {
-                        //TODO: - Call edit tool method
-                        tools.editTool(named: toolName)
+                        tools.addTool(title: toolName, link: toolLink, description: toolDescription, tags: processTags(from: toolTags))
                     }
                     
                     presentationMode.wrappedValue.dismiss()
@@ -98,16 +100,20 @@ struct AddToolView: View {
                 .onTapGesture {
                     messageOffset = hasFieldsToFill() ? 0 : -200
                 }
-
-                
             }
             .padding(.bottom, 50)
-
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("background"))
         .edgesIgnoringSafeArea(.all)
+        .onAppear {
+            if buttonLabel == "Update" {
+                isEditing = true
+                index = tools.getIndexOf(title: toolName)
+            }
+
+        }
 
     }
     
