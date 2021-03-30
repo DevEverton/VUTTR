@@ -9,7 +9,11 @@ import Combine
 import Foundation
 
 class Tools: ObservableObject {
+
     let toolsJSONURL = URL(fileURLWithPath: "ToolsList", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
+    
+    private var isSearching = false
+    
             
     @Published var list = [
         Tool(
@@ -56,7 +60,9 @@ class Tools: ObservableObject {
     ]
     {
         didSet {
-            saveJSONToolsList()
+            if !isSearching {
+                saveJSONToolsList()
+            }
         }
     }
 
@@ -124,7 +130,32 @@ class Tools: ObservableObject {
         list[index].tags = tags
     }
     
+    func search(_ text: String) {
+        let isSearchingByTag = text.starts(with: "#")
+        isSearching = true
+        loadJSONToolsList()
+        
+        if text.isEmpty {
+            isSearching = false
+        }
+        else {
+            if isSearchingByTag {
+                //TODO: - Implement search by tag code here
+                print("Searching by tag")
+            } else {
+                list = list.filter { $0.title.lc().starts(with: text.lc()) }
+            }
+        }
+    }
 }
+
+extension String {
+    func lc() -> String {
+        self.lowercased()
+    }
+}
+
+
 
 public extension FileManager {
   static var documentsDirectoryURL: URL {

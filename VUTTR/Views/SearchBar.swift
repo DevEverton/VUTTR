@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct SearchBar: View {
-    @Binding var text: String
+    @Binding var searchText: String
     @State private var isEditing = false
- 
+    
+    @ObservedObject var tools: Tools
+     
     var body: some View {
         HStack {
  
-            TextField("only tags", text: $text)
+            TextField("insert tool or tag #", text: $searchText)
                 .padding(8)
                 .background(Color("gray"))
                 .foregroundColor(Color.white)
@@ -25,10 +27,18 @@ struct SearchBar: View {
                 }
                 .animation(.spring())
                 .font(.system(size: 16, weight: .regular, design: .serif))
+                .onChange(of: searchText, perform: { value in
+                    tools.search(value)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        hideKeyboard()
+                            
+                    }
+                })
+
  
             if isEditing {
                 Button(action: {
-                    self.text = ""
+                    self.searchText = ""
                     self.isEditing = false
                     hideKeyboard()
  
@@ -40,7 +50,6 @@ struct SearchBar: View {
                 .padding(.trailing, 10)
                 .transition(.move(edge: .trailing))
                 .animation(.default)
-
                 
             }
 
@@ -58,7 +67,7 @@ extension View {
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBar(text: .constant(""))
+        SearchBar(searchText: .constant(""), tools: .init())
             .previewLayout(.sizeThatFits)
             .padding(10)
             

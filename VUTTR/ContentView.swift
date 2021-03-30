@@ -10,13 +10,12 @@ import Combine
 
 struct ContentView: View {
     @ObservedObject var tools: Tools
-    @State var searchText = ""
     @State var isAddingTool = false
-    
     @State var isShowingWebView: Bool = false
     @State var linkURL = URL(string: "https://www.google.com")!
     @State var _title = "Tool"
 
+    @State var searchText = ""
     
     var body: some View {
         ZStack {
@@ -31,9 +30,9 @@ struct ContentView: View {
                     .padding(.bottom)
                     .font(.system(size: 40, weight: .bold, design: .serif))
 
-                SearchBar(text: $searchText)
+                SearchBar(searchText: $searchText, tools: tools)
                     .padding(.top)
-
+                
                 ListView(tools: tools, isShowingWebView: $isShowingWebView, linkURL: $linkURL, _title: $_title)
                     .padding(.top, 5)
                     .animation(.easeInOut(duration: 0.2))
@@ -45,10 +44,11 @@ struct ContentView: View {
                     Spacer()
                     Button(action: {
                         isAddingTool.toggle()
+                        searchText = ""
                     }){
                         Image(systemName: "plus.circle.fill")
                             .font(.system(size: 55, weight: .regular))
-                            .foregroundColor(Color("green"))
+                            .foregroundColor(Color("yellow"))
                             .shadow(color: Color.black.opacity(0.8), radius: 3, x: 3, y: 3)
                     }
                 }
@@ -57,7 +57,9 @@ struct ContentView: View {
             .sheet(isPresented: $isAddingTool, content: {
                 AddToolView(title: "Add new tool", buttonLabel: "Add tool", tools: tools)
             })
+            
         }
+
     }
     
 }
