@@ -131,19 +131,30 @@ class Tools: ObservableObject {
     }
     
     func search(_ text: String) {
+        //TODO: - FIX BUG -> list disapear when I write # on search bar
+        
         let isSearchingByTag = text.starts(with: "#")
         isSearching = true
         loadJSONToolsList()
+        
+        var newList = [Tool]()
+        var newText = text
         
         if text.isEmpty {
             isSearching = false
         }
         else {
             if isSearchingByTag {
-                //TODO: - Implement search by tag code here
-                print("Searching by tag")
+                newText.remove(at: text.startIndex)
+                for tool in list {
+                    if tool.tags.reduce("", {$0 + $1}).contains(newText) {
+                        newList.append(tool)
+                    }
+                }
+                list = newList
+
             } else {
-                list = list.filter { $0.title.lc().starts(with: text.lc()) }
+                list = list.filter { $0.title.lc().contains(text.lc()) }
             }
         }
     }

@@ -90,7 +90,7 @@ struct AddToolView: View {
                     .font(.system(size: 18, weight: .semibold, design: .serif))
                     .foregroundColor(.white)
                     .frame(width: 110, height: 30, alignment: .center)
-                    .background(hasFieldsToFill() ? Color("gray") : Color("green"))
+                    .background(hasFieldsToFill() ? Color("green").opacity(0.2) : Color("green"))
                     .cornerRadius(8)
                     
                 }
