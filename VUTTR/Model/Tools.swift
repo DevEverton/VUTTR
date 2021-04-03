@@ -12,7 +12,7 @@ class Tools: ObservableObject {
 
     let toolsJSONURL = URL(fileURLWithPath: "ToolsList", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
     
-    private var isSearching = false
+    @Published var isSearching = false
     
             
     @Published var list = [
@@ -151,7 +151,9 @@ class Tools: ObservableObject {
                         newList.append(tool)
                     }
                 }
-                list = newList
+                if !newText.isEmpty {
+                    list = newList
+                }
 
             } else {
                 list = list.filter { $0.title.lc().contains(text.lc()) }

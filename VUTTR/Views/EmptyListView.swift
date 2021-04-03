@@ -8,16 +8,29 @@
 import SwiftUI
 
 struct EmptyListView: View {
+    let isSearching: Bool
+    
     var body: some View {
         VStack {
             VStack(spacing: 20.0) {
+                if isSearching {
+                    Text("No results")
+                        .multilineTextAlignment(.center)
+                        .font(.system(size: 25, weight: .black, design: .serif))
+                    
+                    Image(systemName: "xmark.bin.circle.fill")
+                        .font(.system(size: 100, weight: .regular))
+                    
+                } else {
+                    Text("Click to add new tool")
+                        .multilineTextAlignment(.center)
+                        .font(.system(size: 25, weight: .black, design: .serif))
+                    
+                    Image(systemName: "plus.circle")
+                        .font(.system(size: 100, weight: .regular))
+                }
 
-                Text("Click to add new tool")
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 25, weight: .black, design: .serif))
-                
-                Image(systemName: "plus.circle")
-                    .font(.system(size: 100, weight: .regular))
+
 
             }
             .foregroundColor(Color("RowColor"))
@@ -34,6 +47,6 @@ struct EmptyListView: View {
 
 struct EmptyListView_Previews: PreviewProvider {
     static var previews: some View {
-        EmptyListView()
+        EmptyListView(isSearching: false)
     }
 }

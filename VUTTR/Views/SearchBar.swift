@@ -29,7 +29,7 @@ struct SearchBar: View {
                 .font(.system(size: 16, weight: .regular, design: .serif))
                 .onChange(of: searchText, perform: { value in
                     tools.search(value)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                         hideKeyboard()
                             
                     }

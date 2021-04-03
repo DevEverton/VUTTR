@@ -19,7 +19,8 @@ struct ListView: View {
         VStack {
             Group {
                 if tools.list.isEmpty {
-                    EmptyListView()
+                    EmptyListView(isSearching: tools.isSearching)
+                    
                 } else {
                     ScrollView(showsIndicators: false) {
                         Spacer()
