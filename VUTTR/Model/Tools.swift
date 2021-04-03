@@ -131,7 +131,6 @@ class Tools: ObservableObject {
     }
     
     func search(_ text: String) {
-        //TODO: - FIX BUG -> list disapear when I write # on search bar
         
         let isSearchingByTag = text.starts(with: "#")
         isSearching = true

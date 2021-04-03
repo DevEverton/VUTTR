@@ -15,6 +15,7 @@ struct SearchBar: View {
      
     var body: some View {
         HStack {
+
  
             TextField("insert tool or tag #", text: $searchText)
                 .padding(8)
@@ -28,8 +29,11 @@ struct SearchBar: View {
                 .animation(.spring())
                 .font(.system(size: 16, weight: .regular, design: .serif))
                 .onChange(of: searchText, perform: { value in
+                    if searchText.count > 20 {
+                        searchText = String(searchText.dropLast())
+                    }
                     tools.search(value)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
                         hideKeyboard()
                             
                     }

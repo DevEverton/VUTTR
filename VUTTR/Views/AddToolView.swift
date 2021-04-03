@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddToolView: View {
     @State var toolName: String = ""
-    @State var toolLink: String = ""
+    @State var toolLink: String = "https://"
     @State var toolDescription: String = ""
     @State var toolTags: String = ""
     @Environment(\.presentationMode) var presentationMode
@@ -47,24 +47,36 @@ struct AddToolView: View {
             .padding(.horizontal)
             .padding(.top, 30)
             
-            TextEntry(placeholder: "tool", title: "Tool name", text: $toolName)
+            //MARK: - Tool name
             
-            TextEntry(placeholder: "link", title: "Tool link", text: $toolLink)
+            TextEntry(placeholder: "tool", title: "Tool name", text: $toolName, charLimit: 20)
+            
+            //MARK: - Tool link
+
+            TextEntry(placeholder: "link", title: "Tool link", text: $toolLink, charLimit: 30)
             
             VStack(alignment: .leading) {
                 Text("Tool description")
                     .font(.system(size: 16, weight: .bold, design: .serif))
                     .foregroundColor(.white)
                     .padding([.leading, .top])
+                
+                //MARK: - Tool description
+
                 TextEditor(text: $toolDescription)
                     .cornerRadius(8)
                     .foregroundColor(Color("RowColor"))
                     .frame(maxWidth: .infinity)
                     .frame(height: 100)
                     .padding(.horizontal)
+                    .onChange(of: toolDescription) { value in
+                        toolDescription = toolDescription.count > 100 ? String(toolDescription.dropLast()) : toolDescription
+                    }
             }
             
-            TextEntry(placeholder: "tags", title: "Tags", text: $toolTags)
+            //MARK: - Tool tags
+
+            TextEntry(placeholder: "tags", title: "Tags", text: $toolTags, charLimit: 30)
             Spacer()
             HStack {
                 Text("*All fields must be filled")
@@ -132,6 +144,7 @@ struct TextEntry: View {
     let placeholder: String
     let title: String
     @Binding var text: String
+    let charLimit: Int
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -140,14 +153,22 @@ struct TextEntry: View {
                 .foregroundColor(.white)
                 .padding([.leading, .top])
 
-
             TextField(placeholder, text: $text)
                 .padding(8)
                 .padding(.horizontal, 10)
                 .foregroundColor(Color("RowColor"))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .onChange(of: text) { value in
+                    blockTyping(value)
+                }
+                .keyboardType(.twitter)
         }
     }
+    
+    private func blockTyping(_ value: String) {
+        text = value.count > charLimit ? String(text.dropLast()) : text
+    }
+
 }
 
 struct AddToolView_Previews: PreviewProvider {
@@ -159,7 +180,7 @@ struct AddToolView_Previews: PreviewProvider {
 
 struct TextEntry_Previews: PreviewProvider {
     static var previews: some View {
-        TextEntry(placeholder: "test", title: "Test", text: .constant(""))
+        TextEntry(placeholder: "test", title: "Test", text: .constant(""), charLimit: 0)
             .previewLayout(.sizeThatFits)
     }
 }

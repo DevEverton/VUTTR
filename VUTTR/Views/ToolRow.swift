@@ -37,11 +37,6 @@ struct ToolRow: View {
                         linkURL = URL(string: link)!
                         _title = title
                         isShowingWebView.toggle()
-
-                        
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//
-//                        }
                     }) {
                         Image(systemName: "link").font(.system(size: 20, weight: .regular))
                             .font(.system(size: 20, weight: .semibold))
@@ -84,8 +79,8 @@ struct ToolRow: View {
                 Text(getTags(from: tags))
                     .font(.system(size: 14, weight: .bold, design: .serif))
                     .foregroundColor(Color("TagColor"))
-            }
 
+            }
 
         }
         .frame(maxWidth: .infinity)
