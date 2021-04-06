@@ -11,6 +11,7 @@ struct ToolWebView: View {
     @Binding var title: String
     @Binding var url: URL
     @State var statusBarIsHidden = false
+    @State var progressBar = 1.0
     
     @Environment(\.presentationMode) var presentationMode
 
@@ -22,6 +23,7 @@ struct ToolWebView: View {
                     .font(.system(size: 25, weight: .bold, design: .serif))
                     .foregroundColor(Color.white)
                     .padding([.top, .leading], 20)
+
                 Spacer()
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
@@ -36,7 +38,13 @@ struct ToolWebView: View {
 
             }
             .frame(height: 100)
+            .frame(maxWidth: .infinity)
             .background(Color("background"))
+            //MARK: - Progress Bar
+            ProgressBar(value: CGFloat(progressBar))
+                .frame(maxHeight: 5.0)
+
+            //MARK: - WebView
             WebView(url: url)
         }
         .statusBar(hidden: statusBarIsHidden)

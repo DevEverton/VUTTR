@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		503BFAC62603E43A00A79EC1 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503BFAC52603E43A00A79EC1 /* Tool.swift */; };
 		503BFACA2603E4CC00A79EC1 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503BFAC92603E4CC00A79EC1 /* Tools.swift */; };
+		5078C0F8261BD3030076AA37 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5078C0F7261BD3030076AA37 /* ProgressBar.swift */; };
 		5088130C260D2092005140C4 /* ToolWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088130B260D2092005140C4 /* ToolWebView.swift */; };
 		50BBC469260CBEB5006A42FF /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBC468260CBEB5006A42FF /* EmptyListView.swift */; };
 		50BBC46D260CD4BB006A42FF /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBC46C260CD4BB006A42FF /* WebView.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		503BFAC52603E43A00A79EC1 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		503BFAC92603E4CC00A79EC1 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		5078C0F7261BD3030076AA37 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		5088130B260D2092005140C4 /* ToolWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolWebView.swift; sourceTree = "<group>"; };
 		50BBC468260CBEB5006A42FF /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		50BBC46C260CD4BB006A42FF /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				50D6EA6925FA6C7000BE74DA /* SearchBar.swift */,
 				50BBC468260CBEB5006A42FF /* EmptyListView.swift */,
 				5088130B260D2092005140C4 /* ToolWebView.swift */,
+				5078C0F7261BD3030076AA37 /* ProgressBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				5088130C260D2092005140C4 /* ToolWebView.swift in Sources */,
 				50C56E3A26057C6F00D0A3DC /* AddToolView.swift in Sources */,
 				50D6EA5225F956BA00BE74DA /* VUTTRApp.swift in Sources */,
+				5078C0F8261BD3030076AA37 /* ProgressBar.swift in Sources */,
 				50BBC469260CBEB5006A42FF /* EmptyListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

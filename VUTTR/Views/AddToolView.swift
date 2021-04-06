@@ -72,6 +72,8 @@ struct AddToolView: View {
                     .onChange(of: toolDescription) { value in
                         toolDescription = toolDescription.count > 100 ? String(toolDescription.dropLast()) : toolDescription
                     }
+                    .autocapitalization(.none)
+
             }
             
             //MARK: - Tool tags
@@ -162,6 +164,8 @@ struct TextEntry: View {
                     blockTyping(value)
                 }
                 .keyboardType(.twitter)
+                .autocapitalization(.none)
+
         }
     }
     

@@ -8,10 +8,12 @@
 import SwiftUI
 import WebKit
 
+//TODO: - Obter a porcentagem de progresso da pagina sendo carregada
+
 struct WebView: UIViewRepresentable {
-    
     let url: URL?
-    
+//    static var progress: Double = 0.0
+
     func makeUIView(context: Context) -> WKWebView {
         
         let prefs = WKWebpagePreferences()
@@ -20,7 +22,10 @@ struct WebView: UIViewRepresentable {
         let config = WKWebViewConfiguration()
         config.defaultWebpagePreferences = prefs
         
-        return WKWebView(frame: .zero, configuration: config)    
+        let webView = WKWebView(frame: .zero, configuration: config)
+        //WebView.progress = webView.estimatedProgress
+
+        return webView
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {

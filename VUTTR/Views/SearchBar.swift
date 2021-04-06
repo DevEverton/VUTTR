@@ -15,8 +15,6 @@ struct SearchBar: View {
      
     var body: some View {
         HStack {
-
- 
             TextField("insert tool or tag #", text: $searchText)
                 .padding(8)
                 .background(Color("gray"))
@@ -35,11 +33,10 @@ struct SearchBar: View {
                     tools.search(value)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
                         hideKeyboard()
-                            
                     }
                 })
+                .autocapitalization(.none)
 
- 
             if isEditing {
                 Button(action: {
                     self.searchText = ""
