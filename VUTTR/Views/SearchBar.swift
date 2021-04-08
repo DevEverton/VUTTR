@@ -31,7 +31,7 @@ struct SearchBar: View {
                         searchText = String(searchText.dropLast())
                     }
                     tools.search(value)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
                         hideKeyboard()
                     }
                 })

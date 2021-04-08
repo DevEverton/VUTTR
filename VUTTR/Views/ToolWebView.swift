@@ -11,9 +11,10 @@ struct ToolWebView: View {
     @Binding var title: String
     @Binding var url: URL
     @State var statusBarIsHidden = false
-    @State var progressBar = 1.0
+    @State var progressBar = 0.0
     
     @Environment(\.presentationMode) var presentationMode
+//    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
 
     
     var body: some View {
@@ -43,6 +44,8 @@ struct ToolWebView: View {
             //MARK: - Progress Bar
             ProgressBar(value: CGFloat(progressBar))
                 .frame(maxHeight: 5.0)
+//                .onReceive(timer) { _ in
+//                }
 
             //MARK: - WebView
             WebView(url: url)

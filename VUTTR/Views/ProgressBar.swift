@@ -15,8 +15,8 @@ struct ProgressBar: View {
         GeometryReader { geometry in
             if value > 0.9 {
                 EmptyView()
-                    .animation(.easeOut(duration: 2.0))
                     .frame(height: 0)
+                
             } else {
                 ZStack(alignment: .leading) {
                     Rectangle()
@@ -27,10 +27,9 @@ struct ProgressBar: View {
                         .opacity(0.3)
                         .background(Color("red"))
                 }
-                .animation(.easeIn(duration: 2.0))
+                .animation(.easeIn(duration: 1.0))
                 .frame(height: 5)
             }
-
         }
     }
 
@@ -44,6 +43,6 @@ struct ProgressBar: View {
 
 struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressBar(value: 0.9)
+        ProgressBar(value: 1.0)
     }
 }

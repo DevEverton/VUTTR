@@ -12,8 +12,9 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
     let url: URL?
-//    static var progress: Double = 0.0
 
+    static var progress = 0.0
+    
     func makeUIView(context: Context) -> WKWebView {
         
         let prefs = WKWebpagePreferences()
@@ -23,8 +24,6 @@ struct WebView: UIViewRepresentable {
         config.defaultWebpagePreferences = prefs
         
         let webView = WKWebView(frame: .zero, configuration: config)
-        //WebView.progress = webView.estimatedProgress
-
         return webView
     }
     
@@ -32,7 +31,7 @@ struct WebView: UIViewRepresentable {
         guard let myURL = url else { return }
         
         let request = URLRequest(url: myURL)
-        
         uiView.load(request)
+        WebView.progress = uiView.estimatedProgress
     }
 }
