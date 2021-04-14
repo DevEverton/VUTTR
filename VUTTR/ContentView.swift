@@ -17,6 +17,7 @@ struct ContentView: View {
 
     @State var searchText = ""
     
+    
     var body: some View {
         ZStack {
             EmptyView()
@@ -38,6 +39,7 @@ struct ContentView: View {
                     .animation(.easeInOut(duration: 0.2))
 
             }
+  
             VStack {
                 Spacer()
                 HStack {

@@ -13,7 +13,6 @@ class Tools: ObservableObject {
     let toolsJSONURL = URL(fileURLWithPath: "ToolsList", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
     
     @Published var isSearching = false
-    
     @Published var list = [Tool]()
     {
         didSet {
@@ -24,7 +23,8 @@ class Tools: ObservableObject {
     }
 
     init() {
-        loadJSONToolsList()
+//        loadJSONToolsList()
+        getToolsFromApi()
     }
     
     private func loadJSONToolsList() {
@@ -56,7 +56,7 @@ class Tools: ObservableObject {
     }
     
     func addTool(title: String, link: String, description: String, tags: [String]) {
-        let tool = Tool(title: title, link: link, description: description, tags: tags)
+        let tool = Tool(id: list.count == 0 ? 1 : list.last!.id + 1, title: title, link: link, description: description, tags: tags)
         list.append(tool)
     }
     
@@ -128,6 +128,30 @@ public extension FileManager {
   static var documentsDirectoryURL: URL {
     return `default`.urls(for: .documentDirectory, in: .userDomainMask)[0]
   }
+}
+
+//MARK: - API calls
+
+extension Tools {
+    
+    func getToolsFromApi() {
+        let url = URL(string: "http://localhost:3000/tools")!
+        URLSession.shared.dataTask(with: url) {(data, response, error) in
+            do {
+                if let data = data {
+                    let decodedData = try JSONDecoder().decode([Tool].self, from: data)
+                    DispatchQueue.main.async {
+                        print("\(decodedData)")
+                        self.list = decodedData
+                    }
+                } else {
+                    print("No data")
+                }
+            } catch {
+                print("Error: \(error.localizedDescription)")
+            }
+        }.resume()
+    }
 }
 
 

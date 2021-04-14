@@ -12,8 +12,6 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
     let url: URL?
-
-    static var progress = 0.0
     
     func makeUIView(context: Context) -> WKWebView {
         
@@ -28,10 +26,13 @@ struct WebView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
+
         guard let myURL = url else { return }
         
         let request = URLRequest(url: myURL)
         uiView.load(request)
-        WebView.progress = uiView.estimatedProgress
+
     }
+
 }
+

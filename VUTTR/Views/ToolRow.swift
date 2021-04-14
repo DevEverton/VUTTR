@@ -22,6 +22,7 @@ struct ToolRow: View {
     @Binding var _title: String
     
     @ObservedObject var tools: Tools
+
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
