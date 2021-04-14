@@ -8,7 +8,7 @@
 import Foundation
 
 struct Tool: Codable, Identifiable {
-    var id: Int
+    var id: Int?
     var title: String
     var link: String?
     var description: String

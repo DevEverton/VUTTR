@@ -24,6 +24,7 @@ class Tools: ObservableObject {
 
     init() {
 //        loadJSONToolsList()
+        postTool(title: "Post method added tool", link: "https://www.google.com", description: "test", tags: ["test1", "test2"])
         getToolsFromApi()
     }
     
@@ -56,8 +57,12 @@ class Tools: ObservableObject {
     }
     
     func addTool(title: String, link: String, description: String, tags: [String]) {
-        let tool = Tool(id: list.count == 0 ? 1 : list.last!.id + 1, title: title, link: link, description: description, tags: tags)
+        let tool = Tool(id: generateId(), title: title, link: link, description: description, tags: tags)
         list.append(tool)
+    }
+    
+    func generateId() -> Int {
+        list.count == 0 ? 1 : list.last!.id! + 1
     }
     
     func getIndexOf(title: String) -> Int {
@@ -135,13 +140,13 @@ public extension FileManager {
 extension Tools {
     
     func getToolsFromApi() {
-        let url = URL(string: "http://localhost:3000/tools")!
+        guard let url = URL(string: "http://localhost:3000/tools") else { return }
+        
         URLSession.shared.dataTask(with: url) {(data, response, error) in
             do {
                 if let data = data {
                     let decodedData = try JSONDecoder().decode([Tool].self, from: data)
                     DispatchQueue.main.async {
-                        print("\(decodedData)")
                         self.list = decodedData
                     }
                 } else {
@@ -151,6 +156,36 @@ extension Tools {
                 print("Error: \(error.localizedDescription)")
             }
         }.resume()
+    }
+    
+    func postTool(title: String, link: String, description: String, tags: [String]) {
+        
+        guard let url = URL(string: "http://localhost:3000/tools") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let tool = Tool(title: title, link: link, description: description, tags: tags)
+        let encodedTool = try! JSONEncoder().encode(tool)
+        request.httpBody = encodedTool
+        
+
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            do {
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let jsonData = data else {
+                    return }
+                do {
+                    let decodedTool = try JSONDecoder().decode(Tool.self, from: jsonData)
+                    print("DecodedTool: \(decodedTool)")
+                }
+            } catch {
+                print("Error: \(error.localizedDescription)")
+            }
+
+        }.resume()
+        
     }
 }
 
