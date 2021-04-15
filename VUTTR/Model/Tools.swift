@@ -13,8 +13,8 @@ class Tools: ObservableObject {
     let toolsJSONURL = URL(fileURLWithPath: "ToolsList", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
     
     @Published var isSearching = false
-    @Published var list = [Tool]()
-    {
+    
+    @Published var list = [Tool]() {
         didSet {
             if !isSearching {
                 saveJSONToolsList()
@@ -23,9 +23,8 @@ class Tools: ObservableObject {
     }
 
     init() {
-//        loadJSONToolsList()
-        postTool(title: "Post method added tool", link: "https://www.google.com", description: "test", tags: ["test1", "test2"])
-        getToolsFromApi()
+        //TODO: - Test if device has connectivity
+        getTools()
     }
     
     private func loadJSONToolsList() {
@@ -139,7 +138,7 @@ public extension FileManager {
 
 extension Tools {
     
-    func getToolsFromApi() {
+    func getTools() {
         guard let url = URL(string: "http://localhost:3000/tools") else { return }
         
         URLSession.shared.dataTask(with: url) {(data, response, error) in

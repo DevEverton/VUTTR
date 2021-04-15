@@ -94,7 +94,9 @@ struct AddToolView: View {
                         tools.edit(withIndex: index, name: toolName, link: toolLink, description: toolDescription, tags: processTags(from: toolTags))
 
                     } else {
-                        tools.addTool(title: toolName, link: toolLink, description: toolDescription, tags: processTags(from: toolTags))
+//                        tools.addTool(title: toolName, link: toolLink, description: toolDescription, tags: processTags(from: toolTags))
+                        tools.postTool(title: toolName, link: toolLink, description: toolDescription, tags: processTags(from: toolTags))
+                        tools.getTools()
                     }
                     
                     presentationMode.wrappedValue.dismiss()
