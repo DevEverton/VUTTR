@@ -186,6 +186,18 @@ extension Tools {
         }.resume()
         
     }
+    
+    func deleteTool(id: Int) {
+        guard let url = URL(string: "http://localhost:3000/tools/\(id)") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let _ = data else {
+                print("Error: \(String(describing: error?.localizedDescription))")
+                return }
+        }.resume()
+    }
 }
 
 

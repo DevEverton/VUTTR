@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ToolRow: View {
-//    let id: Int
+    let id: Int
     let title: String
     let link: String
     let description: String
@@ -56,8 +56,9 @@ struct ToolRow: View {
                         Alert(title: Text("Remove tool"), message: Text("Are you sure do you want to remove \(title)?"),
                               primaryButton: .cancel(),
                               secondaryButton: .destructive(Text("Yes, remove")) {
-                                let index = tools.getIndexOf(title: title)
-                                tools.deleteTool(at: index)
+                                tools.deleteTool(id: id)
+                                tools.getTools()
+                                
                               })
                     }
  
@@ -115,7 +116,7 @@ struct ToolRow: View {
 struct ToolRow_Previews: PreviewProvider {
     static var previews: some View {
         ToolRow(
-            title: "Notion",
+            id: 1, title: "Notion",
             link: "https://notion.so",
             description: "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
             tags: [
