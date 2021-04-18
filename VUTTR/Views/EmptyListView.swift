@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EmptyListView: View {
     let isSearching: Bool
+    let isLoading: Bool
     
     var body: some View {
         VStack {
@@ -22,15 +23,19 @@ struct EmptyListView: View {
                         .font(.system(size: 100, weight: .regular))
                     
                 } else {
-                    Text("Click to add new tool")
-                        .multilineTextAlignment(.center)
-                        .font(.system(size: 25, weight: .black, design: .serif))
-                    
-                    Image(systemName: "plus.circle")
-                        .font(.system(size: 100, weight: .regular))
+                    if isLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: Color("red")))
+                            .scaleEffect(1.5, anchor: .center)
+                    } else {
+                        Text("Click to add new tool")
+                            .multilineTextAlignment(.center)
+                            .font(.system(size: 25, weight: .black, design: .serif))
+
+                        Image(systemName: "plus.circle")
+                            .font(.system(size: 100, weight: .regular))
+                    }
                 }
-
-
 
             }
             .foregroundColor(Color("RowColor"))
@@ -47,6 +52,6 @@ struct EmptyListView: View {
 
 struct EmptyListView_Previews: PreviewProvider {
     static var previews: some View {
-        EmptyListView(isSearching: false)
+        EmptyListView(isSearching: false, isLoading: true)
     }
 }

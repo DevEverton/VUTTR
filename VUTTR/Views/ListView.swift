@@ -19,7 +19,7 @@ struct ListView: View {
         VStack {
             Group {
                 if tools.list.isEmpty {
-                    EmptyListView(isSearching: tools.isSearching)
+                    EmptyListView(isSearching: tools.isSearching, isLoading: tools.isLoading)
                     
                 } else {
                     ScrollView(showsIndicators: false) {

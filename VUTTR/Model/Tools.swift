@@ -13,6 +13,7 @@ class Tools: ObservableObject {
     let toolsJSONURL = URL(fileURLWithPath: "ToolsList", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
     
     @Published var isSearching = false
+    @Published var isLoading = false
     
     @Published var list = [Tool]() {
         didSet {
@@ -25,6 +26,7 @@ class Tools: ObservableObject {
     init() {
         //TODO: - Test if device has connectivity
         getTools()
+
     }
     
     private func loadJSONToolsList() {
@@ -140,21 +142,27 @@ extension Tools {
     
     func getTools() {
         guard let url = URL(string: "http://localhost:3000/tools") else { return }
-        
+        self.isLoading.toggle()
+
         URLSession.shared.dataTask(with: url) {(data, response, error) in
             do {
                 if let data = data {
                     let decodedData = try JSONDecoder().decode([Tool].self, from: data)
                     DispatchQueue.main.async {
                         self.list = decodedData
+                        self.isLoading.toggle()
                     }
                 } else {
-                    print("No data")
+                    DispatchQueue.main.async {
+                        print("No data")
+                    }
                 }
             } catch {
                 print("Error: \(error.localizedDescription)")
             }
-        }.resume()
+        }
+        .resume()
+        
     }
     
     func postTool(title: String, link: String, description: String, tags: [String]) {
