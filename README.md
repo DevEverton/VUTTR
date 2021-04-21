@@ -1,5 +1,5 @@
 # VUTTR
-Mobile challenge proposed from the freelancer website [Bossabox](https://bossabox.com/).
+Mobile challenge proposed from the freelancer website [Bossabox](https://bossabox.com/). The entire project was build using SwiftUI. The backend was built in NodeJS and it was provided from the website. You can get the API cloning [this repository](https://gitlab.com/bossabox/challenge-fake-api/tree/master)
 
 ##Wireframes
 
