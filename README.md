@@ -1,5 +1,5 @@
 # VUTTR
-Mobile challenge proposed from the freelancer website [Bossabox](website https://bossabox.com).
+Mobile challenge proposed from the freelancer website [Bossabox](https://bossabox.com/).
 
 ##Wireframes
 
