@@ -43,6 +43,7 @@ struct ToolRow: View {
                             .font(.system(size: 20, weight: .semibold))
                             .foregroundColor(Color.blue)
                     }
+
                     
                     //MARK: - Delete button
                     Button(action: {
@@ -61,9 +62,11 @@ struct ToolRow: View {
                                 
                               })
                     }
+
  
                 }
                 .padding(.trailing, 12)
+                
                 
             }
 

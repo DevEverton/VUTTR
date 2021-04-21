@@ -26,7 +26,7 @@ struct EmptyListView: View {
                     if isLoading {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: Color("red")))
-                            .scaleEffect(1.5, anchor: .center)
+                            .scaleEffect(1.2, anchor: .center)
                     } else {
                         Text("Click to add new tool")
                             .multilineTextAlignment(.center)

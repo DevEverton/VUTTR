@@ -14,6 +14,7 @@ class Tools: ObservableObject {
     
     @Published var isSearching = false
     @Published var isLoading = false
+    @Published var responseError = false
     
     @Published var list = [Tool]() {
         didSet {
@@ -143,6 +144,7 @@ extension Tools {
     func getTools() {
         guard let url = URL(string: "http://localhost:3000/tools") else { return }
         self.isLoading.toggle()
+        self.responseError = false
 
         URLSession.shared.dataTask(with: url) {(data, response, error) in
             do {
@@ -154,7 +156,8 @@ extension Tools {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        print("No data")
+                        self.responseError.toggle()
+                        print("No data \(self.responseError)")
                     }
                 }
             } catch {
@@ -183,7 +186,9 @@ extension Tools {
             do {
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let jsonData = data else {
                     return }
+
                 do {
+
                     let decodedTool = try JSONDecoder().decode(Tool.self, from: jsonData)
                     print("DecodedTool: \(decodedTool)")
                 }
@@ -206,6 +211,12 @@ extension Tools {
                 return }
         }.resume()
     }
+    
+    func searchGlobal() {
+        
+    }
+    
+
 }
 
 

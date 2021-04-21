@@ -33,6 +33,10 @@ struct ContentView: View {
 
                 SearchBar(searchText: $searchText, tools: tools)
                     .padding(.top)
+                    .alert(isPresented: $tools.responseError) {
+                        Alert(title: Text("Response Error"), message: Text("The data is unavailable. Check your internet connectivity."), dismissButton: .cancel())
+                    }
+
                 
                 ListView(tools: tools, isShowingWebView: $isShowingWebView, linkURL: $linkURL, _title: $_title)
                     .padding(.top, 5)

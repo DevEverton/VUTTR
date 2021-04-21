@@ -26,7 +26,6 @@ struct ListView: View {
                         Spacer()
                         ForEach(tools.list) { tool in
                             ToolRow(id: tool.id! ,title: tool.title, link: tool.link!, description: tool.description, tags: tool.tags, isShowingWebView: $isShowingWebView, linkURL: $linkURL, _title: $_title, tools: tools)
-
                                 .listRowBackground(Color("background"))
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 6)
@@ -38,6 +37,9 @@ struct ListView: View {
                     }
                 }
             }
+
+
+            
         }
         .background(Color("background"))
         .clipShape(RoundedRectangle(cornerRadius: 30))
