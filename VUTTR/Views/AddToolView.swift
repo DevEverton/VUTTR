@@ -165,7 +165,7 @@ struct TextEntry: View {
                 .onChange(of: text) { value in
                     blockTyping(value)
                 }
-                .keyboardType(.twitter)
+                .keyboardType(.default)
                 .autocapitalization(.none)
 
         }
