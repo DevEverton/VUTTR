@@ -53,7 +53,7 @@ struct AddToolView: View {
             
             //MARK: - Tool link
 
-            TextEntry(placeholder: "link", title: "Tool link", text: $toolLink, charLimit: 30)
+            TextEntry(placeholder: "link", title: "Tool link", text: $toolLink, charLimit: 50)
             
             VStack(alignment: .leading) {
                 Text("Tool description")
