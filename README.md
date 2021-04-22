@@ -8,8 +8,7 @@ Mobile challenge proposed from the freelancer website [Bossabox](https://bossabo
 
 ## Final result
 
-![final_result](https://user-images.githubusercontent.com/29552154/115484783-c5c03900-a229-11eb-8b4b-614e4a076913.png)
-
+![result](https://user-images.githubusercontent.com/29552154/115636575-9d494500-a2e4-11eb-961a-bf20f60aa6bc.png)
 
 ## Contributing
 Pull requests are welcome. I've used this project as a learning experience to improve my SwiftUI Skills. Any feedback on my code would be apreciated.
